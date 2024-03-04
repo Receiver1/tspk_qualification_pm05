@@ -12,15 +12,21 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .main-bg{
+            background: rgba(0, 0, 0, .65) url({{ Vite::image('background.png') }});
+            background-blend-mode: darken;
+        }
+    </style>
 </head>
 
-<body class="antialiased">
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<body class="antialiased main-bg">
+    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen selection:bg-red-500 selection:text-white">
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex content-center flex-col">
-                <img src="{{ Vite::image('OIP.png') }}" class="self-center h-20 w-20 bg-gray-100 dark:bg-gray-900" alt="">
+                <img src="{{ Vite::image('OIP.png') }}" class="self-center h-20 w-20 " alt="">
                         
                         <div>
                             @if (Route::has('login'))
