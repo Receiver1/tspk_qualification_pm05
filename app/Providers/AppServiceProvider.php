@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Vite;
@@ -21,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        App::setLocale('ru');
+
         Validator::extend('cyrillic', function ($attribute, $value, $parameters, $validator) {
             return preg_match('/[А-Яа-яЁё]/u', $value);
         }, 'cyrillic');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->unsignedBigInteger('phone_number');
             $table->rememberToken();
             $table->timestamps();
