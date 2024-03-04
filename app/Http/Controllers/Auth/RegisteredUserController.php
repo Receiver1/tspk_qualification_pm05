@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -31,14 +32,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'cyrillic'],
+            'login' => ['required', 'string', 'min:6', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone_number' => ['required', 'numeric', 'digits:10'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $name_parts = Str::of($request->name)->squish()->explode(' ', 3);
+
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $name_parts[1],
+            'middle_name' => $name_parts[2],
+            'last_name' => $name_parts[0],
+            'login' => $request->login,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
