@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/newStatement', function () {
-    return view('newStatement');
-})->middleware(['auth', 'verified'])->name('newStatement');
-
-Route::get('/adminPanel', function () {
-    return view('adminPanel');
-})->middleware(['auth', 'verified'])->name('adminPanel');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [IndexController::class, 'dashboard'])->name('dashboard');
+    Route::get('/newStatement', [IndexController::class, 'newStatement'])->name('newStatement');
+    Route::post('/newStatement', [IndexController::class, 'createStatement'])->name('statement.create');
+    Route::get('/adminPanel', [AdminController::class, 'index'])->name('adminPanel');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

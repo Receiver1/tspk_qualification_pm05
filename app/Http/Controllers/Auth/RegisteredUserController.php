@@ -32,14 +32,18 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'cyrillic'],
-            'login' => ['required', 'string', 'min:6', 'max:255'],
+            'name' => ['required', 'string', 'full_name'],
+            'login' => ['required', 'string', 'min:4', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone_number' => ['required', 'numeric', 'digits:10'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $name_parts = Str::of($request->name)->squish()->explode(' ', 3);
+        $name_parts = Str::of($request->name)->squish()->explode(' ');
+        if (count($name_parts) != 3)
+            return back()->withErrors([
+                'name' => __('Поле ФИО должно содержать 3 слова.')
+            ]);
 
         $user = User::create([
             'first_name' => $name_parts[1],

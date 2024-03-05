@@ -7,9 +7,9 @@
 
     <div class="py-12">
 
-        <div class="w-full h-full flex items-center justify-center">
-            <div class="bg-white p-8 rounded-lg shadow-md sm:w-6/12 lg:w-4/12">
-                <form method="POST" action="{{ route('newStatement') }}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <form method="POST" action="{{ route('statement.create') }}" class="mt-6 space-y-6">
                     @csrf
                     <!-- car number -->
                     <div>
@@ -20,7 +20,7 @@
                     </div>
         
                     <!-- description -->
-                    <div class="mt-4">
+                    <div>
                         <x-input-label for="description" :value="__('Описание')" />
                         
                         <!-- Используем textarea для многострочного ввода -->
@@ -30,8 +30,8 @@
                         <x-input-error :messages="$errors->get('description')" class="mt-2" />
                     </div>
         
-                    <div class="flex items-center justify-center mt-4">
-                        <x-primary-button class="ms-3">
+                    <div>
+                        <x-primary-button class="mt-6">
                             {{ __('Отправить') }}
                         </x-primary-button>
                     </div>

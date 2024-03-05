@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -26,7 +27,18 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $name_parts = Str::of($request->name)->squish()->explode(' ');
+        if (count($name_parts) != 3)
+            return back()->withErrors([
+                'name' => __('Поле ФИО должно содержать 3 слова.')
+            ]);
+
+        $request->user()->fill([
+            ...$request->except('name'),
+            'first_name' => $name_parts[1],
+            'middle_name' => $name_parts[2],
+            'last_name' => $name_parts[0],
+        ]);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

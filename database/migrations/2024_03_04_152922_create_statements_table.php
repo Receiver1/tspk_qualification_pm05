@@ -19,6 +19,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('license_plate');
             $table->string('description');
+            $table->string('status')->default('created');
             $table->timestamps();
         });
     }
