@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="container mx-auto">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="py-6">
-            <div class = "grid grid-cols-2 gap-6">
+            <div class = "grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
 
             @foreach ($statements as $statement)
             <div class="w-full mx-auto">

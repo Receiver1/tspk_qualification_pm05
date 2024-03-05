@@ -145,7 +145,8 @@ return [
     'url' => 'Поле :attribute должно быть действительным URL.',
     'ulid' => 'Поле :attribute должно быть действительным ULID.',
     'uuid' => 'Поле :attribute должно быть действительным UUID.',
-    'cyrillic' => 'Поле :attribute должно быть на кириллице.',
+    'full_name' => 'Поле :attribute должно быть российской ФИО.',
+    'license_plate' => 'Поле :attribute должно быть российским автомобильным номером.',
 
     'custom' => [
         'attribute-name' => [
