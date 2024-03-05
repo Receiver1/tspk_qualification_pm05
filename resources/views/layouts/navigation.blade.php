@@ -40,9 +40,11 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Профиль') }}
                         </x-dropdown-link>
+                        @if(Auth::user()->is_admin)
                         <x-dropdown-link :href="route('adminPanel')">
                             {{ __('Админ панель') }}
                         </x-dropdown-link>
+                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

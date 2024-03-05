@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/newStatement', [IndexController::class, 'newStatement'])->name('newStatement');
     Route::post('/newStatement', [IndexController::class, 'createStatement'])->name('statement.create');
     Route::get('/adminPanel', [AdminController::class, 'index'])->name('adminPanel');
+    Route::post('/changeStatus/{statement}', [AdminController::class, 'changeStatus'])->name('admin.changeStatus');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
