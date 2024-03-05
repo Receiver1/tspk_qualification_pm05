@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class = "grid grid-cols-2 gap-1 ">
+        <div class = "grid sm:grid-cols-1 lg:grid-cols-2 gap-1 ">
 
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">

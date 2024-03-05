@@ -26,6 +26,10 @@ Route::get('/newStatement', function () {
     return view('newStatement');
 })->middleware(['auth', 'verified'])->name('newStatement');
 
+Route::get('/adminPanel', function () {
+    return view('adminPanel');
+})->middleware(['auth', 'verified'])->name('adminPanel');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

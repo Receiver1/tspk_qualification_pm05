@@ -42,6 +42,9 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Профиль') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('adminPanel')">
+                            {{ __('Админ панель') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -93,6 +96,9 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Профиль') }}
                 </x-responsive-nav-link>
+                <x-dropdown-link :href="route('adminPanel')">
+                    {{ __('Админ панель') }}
+                </x-dropdown-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

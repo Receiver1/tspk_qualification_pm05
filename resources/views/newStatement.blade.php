@@ -8,7 +8,7 @@
     <div class="py-12">
 
         <div class="w-full h-full flex items-center justify-center">
-            <div class="bg-white p-8 rounded-lg shadow-md w-4/12">
+            <div class="bg-white p-8 rounded-lg shadow-md sm:w-6/12 lg:w-4/12">
                 <form method="POST" action="{{ route('newStatement') }}">
                     @csrf
                     <!-- car number -->
