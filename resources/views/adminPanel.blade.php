@@ -35,7 +35,7 @@
                                         @csrf
 
                                         <select class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full" name="status" onchange="this.form.submit()">
-                                            <option value="created" {{ $statement->status == 'created' ? 'selected' : '' }}>Ожидает</option>
+                                            <option value="created" {{ $statement->status == 'created' ? 'selected' : '' }}>Новое</option>
                                             <option value="confirmed" {{ $statement->status == 'confirmed' ? 'selected' : '' }}>Подтверждено</option>
                                             <option value="denied" {{ $statement->status == 'denied' ? 'selected' : '' }}>Отклонено</option>
                                         </select>
